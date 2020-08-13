@@ -82,11 +82,9 @@ class Player:
 
                 if input("Press S to exit and listen on Spotify, or anything else to continue listening to more samples").upper() == "S":
                     liked_show = show["external_urls"]["spotify"]
-                    print("Internal break")
                     break
 
             if liked_show:
-                print("WTF")
                 break
 
         # Delete audio
