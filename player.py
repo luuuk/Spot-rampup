@@ -80,7 +80,7 @@ class Player:
             while (1):
                 playsound(path)
 
-                if input("Press S to exit and listen on Spotify ").upper() == "S":
+                if input("Press S to exit and listen on Spotify, or anything else to continue listening to more samples").upper() == "S":
                     liked_show = show["external_urls"]["spotify"]
                     print("Internal break")
                     break
