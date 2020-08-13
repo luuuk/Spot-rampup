@@ -4,6 +4,7 @@ import requests
 from playsound import playsound
 from exceptions import ResponseException
 from secret import spotify_token, username
+from SentimentAnalyzer import analyzeDescription
 import webbrowser
 import os
 
@@ -67,6 +68,7 @@ class Player:
         path = "/Users/{}/Downloads/temp.mp3".format(username)
         for show in episodes:
             print("\n" + show["description"].strip() + "\n")
+            analyzeDescription(show["description"].strip())
 
             # Download audio
             r = requests.get(show["audio_preview_url"])
