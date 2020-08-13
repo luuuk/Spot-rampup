@@ -14,7 +14,6 @@ class Player:
         self.sampleEpisodes(show_id)
 
     def searchShow(self):
-        """Search For Podcast"""
         pod_name = input(
             "What is the name of your podcast? ")
         print("Searching for " + pod_name + "\n")
@@ -49,7 +48,6 @@ class Player:
         quit()
 
     def sampleEpisodes(self, show_id):
-        """Get show episodes"""
         query = "https://api.spotify.com/v1/shows/{}/episodes".format(
             show_id
         )
@@ -63,11 +61,14 @@ class Player:
         response_json = response.json()
         episodes = response_json["items"]
 
-        print("Now sampling " + str(len(episodes)) + " episodes")
-        path = "/Users/{}/Downloads/temp.mp3".format(username)
+        print("Now sampling " + str(len(episodes)) +
+              " episodes")
 
+        print("Once audio begins playing, you can use ")
+
+        path = "/Users/{}/Downloads/temp.mp3".format(username)
         for show in episodes:
-            print(show["description"].strip() + "\n")
+            print("\n" + show["description"].strip() + "\n")
 
             # Download audio
             r = requests.get(show["audio_preview_url"])
@@ -75,11 +76,24 @@ class Player:
             with open(path, 'wb') as f:
                 f.write(r.content)
 
-            # Play audio and wait
-            playsound(path)
+            # Play audio
+            while (1):
+                playsound(path)
+
+                if input("Press S to exit and listen on Spotify ").upper() == "S":
+                    liked_show = show["external_urls"]["spotify"]
+                    print("Internal break")
+                    break
+
+            if liked_show:
+                print("WTF")
+                break
 
         # Delete audio
         os.remove(path)
+        if liked_show:
+            webbrowser.open(liked_show)
+            print("We're glad we could help you find a show you like!\n")
 
 
 if __name__ == '__main__':
