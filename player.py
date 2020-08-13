@@ -1,9 +1,11 @@
 import json
-
 import requests
 
+from playsound import playsound
 from exceptions import ResponseException
-from secret import spotify_token, spotify_user_id
+from secret import spotify_token, username
+import webbrowser
+import os
 
 
 class Player:
@@ -13,7 +15,6 @@ class Player:
 
     def searchShow(self):
         """Search For Podcast"""
-        # TODO localization info
         pod_name = input(
             "What is the name of your podcast? ")
         print("Searching for " + pod_name + "\n")
@@ -29,6 +30,11 @@ class Player:
                 "Authorization": "Bearer {}".format(spotify_token)
             }
         )
+        if response.status_code != 200:
+            webbrowser.open(
+                "https://developer.spotify.com/console/get-show-episodes/")
+            raise ResponseException(response.status_code)
+
         response_json = response.json()
         shows = response_json["shows"]["items"]
 
@@ -57,8 +63,23 @@ class Player:
         response_json = response.json()
         episodes = response_json["items"]
 
+        print("Now sampling " + str(len(episodes)) + " episodes")
+        path = "/Users/{}/Downloads/temp.mp3".format(username)
+
         for show in episodes:
-            print(show["description"] + "\n")
+            print(show["description"].strip() + "\n")
+
+            # Download audio
+            r = requests.get(show["audio_preview_url"])
+
+            with open(path, 'wb') as f:
+                f.write(r.content)
+
+            # Play audio and wait
+            playsound(path)
+
+        # Delete audio
+        os.remove(path)
 
 
 if __name__ == '__main__':

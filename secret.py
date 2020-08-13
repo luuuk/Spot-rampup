@@ -1,3 +1,5 @@
-# Make sure to fill in your spotify client_secret information
-spotify_token = "BQDsjw5mhUyZgKbaOuipmGz1SyLc3myRcdpSyD7zcPfQr0we5SgybabFIeeBEvWwM6ILrBzFSQsMrIfEyi0CeNWOdd_dBARbEpdao95KVMxL4zqfR3NR_MiBFU_M9yrPmZkL1RMtvVeqot8MJl1Z9n2bOgiPb1NOgGpg3u6qQ4GcY5mpaQWZqbi8Td0gey1nSAN1yW3dYZm1GbaJCrxjsGM"
-spotify_user_id = "lukel816"
+# spotify oauth token
+spotify_token = "BQA4CyDea26l57cE6Imp_Sbgq1agzyTQpynnzSa6yGTTjHZaJXW1m-JT5XYUplVpM5BdG9KmRoTz4AuUd1Ab7bFrVXIDtC2kr17zMNTtu-8daeb8QvzDg1gbnHZpBZG-i6m2bBnbm-UbbE-OaawiCxQtQbp2mHJlbqPNebxwBDnN9xH0kOjg-hyDfUtXAVJ2BLqPuj8SDABCGXTQ92_ycdM"
+
+# your local login on your computer
+username = "lukelevasseur"
