@@ -64,8 +64,6 @@ class Player:
         print("Now sampling " + str(len(episodes)) +
               " episodes")
 
-        print("Once audio begins playing, you can use ")
-
         path = "/Users/{}/Downloads/temp.mp3".format(username)
         for show in episodes:
             print("\n" + show["description"].strip() + "\n")
