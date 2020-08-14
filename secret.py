@@ -1,5 +1,0 @@
-# spotify oauth token
-spotify_token = "BQC_tuUg-d4zR2CITO3x2BpzYMfnGcJ1FyrllH9P_2-gOMJVKm4EmJnsP6wY-CeiiSxG7dgfwn-wNbXJ-lnnZ9sKldaHSbFQ7wMPhEJVK6hEliuI12mCOzDH2uV6rQpQpi_HP6K_0YvBpMVhZZjz24nlcLUO5z9uNnhQTC8iMxN9ptUYKy7MKbElnELf6U25w23XLS-U6ffTxOhrmz95evI"
-
-# your local login on your computer
-username = "lukelevasseur"

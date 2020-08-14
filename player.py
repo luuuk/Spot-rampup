@@ -64,6 +64,11 @@ class Player:
 
         path = "/Users/{}/Downloads/temp.mp3".format(username)
         liked_show = None
+
+        googleAPIenabled = input(
+            "Do you want to run Google's NLP API's (Y/N)? You need to have your "
+            + "Google authentication tokens configured in advance for this to work. ").upper() == "Y"
+
         for show in episodes:
 
             # Print show language and analyzed keywords and sentiment
@@ -71,8 +76,9 @@ class Player:
             desc = show["description"].strip()
             print("\n" + desc + "\n")
 
-            analyzeDescription(desc)
-            analyzeKeywords(desc, show["language"])
+            if googleAPIenabled:
+                analyzeDescription(desc)
+                analyzeKeywords(desc, show["language"])
 
             if input("Want to listen to the first 30 seconds? (Y/N) ").upper() == "Y":
 

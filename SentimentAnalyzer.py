@@ -32,7 +32,9 @@ def analyzeKeywords(text_content, lang):
 
     response = client.analyze_entities(document, encoding_type=encoding_type)
 
-    print("Keywords: ")
+    print("\nKeywords: ")
     for entity in response.entities:
         if entity.salience > .05:
             print(entity.name)
+
+    print()
