@@ -1,5 +1,5 @@
 # spotify oauth token
-spotify_token = "BQCUaA-f4CNxxgyKxmsTwVJf_CVC5mZ1EH2g-38LX0-GZHe9GAA4253zu7NhwGtNsprG-rE6RoClQA1twg0sh_zMY91gZfo354L-K85Xga1RXEOsmCViW90x5YZLxoU7LuFFL3xngTOYylLNlxxF5edwt9xWBn4ZUrs2wO4Z8815awFBoA6Rcj8B_v0EAXLtEpbefh72VMcKWuVaZA90iqQ"
+spotify_token = "BQC_tuUg-d4zR2CITO3x2BpzYMfnGcJ1FyrllH9P_2-gOMJVKm4EmJnsP6wY-CeiiSxG7dgfwn-wNbXJ-lnnZ9sKldaHSbFQ7wMPhEJVK6hEliuI12mCOzDH2uV6rQpQpi_HP6K_0YvBpMVhZZjz24nlcLUO5z9uNnhQTC8iMxN9ptUYKy7MKbElnELf6U25w23XLS-U6ffTxOhrmz95evI"
 
 # your local login on your computer
 username = "lukelevasseur"

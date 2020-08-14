@@ -4,7 +4,7 @@ import requests
 from playsound import playsound
 from exceptions import ResponseException
 from secret import spotify_token, username
-from SentimentAnalyzer import analyzeDescription
+from SentimentAnalyzer import analyzeDescription, analyzeKeywords
 import webbrowser
 import os
 
@@ -62,36 +62,45 @@ class Player:
         response_json = response.json()
         episodes = response_json["items"]
 
-        print("Now sampling " + str(len(episodes)) +
-              " episodes")
-
         path = "/Users/{}/Downloads/temp.mp3".format(username)
+        liked_show = None
         for show in episodes:
-            print("\n" + show["description"].strip() + "\n")
-            analyzeDescription(show["description"].strip())
 
-            # Download audio
-            r = requests.get(show["audio_preview_url"])
+            # Print show language and analyzed keywords and sentiment
+            print("Language: " + show["language"])
+            desc = show["description"].strip()
+            print("\n" + desc + "\n")
 
-            with open(path, 'wb') as f:
-                f.write(r.content)
+            analyzeDescription(desc)
+            analyzeKeywords(desc, show["language"])
 
-            # Play audio
-            while (1):
+            if input("Want to listen to the first 30 seconds? (Y/N) ").upper() == "Y":
+
+                print("Downloading...")
+
+                # Download audio
+                r = requests.get(show["audio_preview_url"])
+
+                with open(path, 'wb') as f:
+                    f.write(r.content)
+
+                print("Playing...")
+
+                # Play audio
                 playsound(path)
 
-                if input("Press S to exit and listen on Spotify, or anything else to continue listening to more samples").upper() == "S":
+                if input("If you like what you heard, press S to continue listening on Spotify. Push anything else to try a new sample ").upper() == "S":
                     liked_show = show["external_urls"]["spotify"]
                     break
 
-            if liked_show:
-                break
+                # Delete audio
+                print("Deleting audio sample...")
+                os.remove(path)
 
-        # Delete audio
-        os.remove(path)
-        if liked_show:
-            webbrowser.open(liked_show)
-            print("We're glad we could help you find a show you like!\n")
+            if liked_show:
+                webbrowser.open(liked_show)
+                print("We're glad we could help you find a show you like!\n")
+                quit()
 
 
 if __name__ == '__main__':
