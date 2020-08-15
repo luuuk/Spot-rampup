@@ -95,18 +95,18 @@ class Player:
                 # Play audio
                 playsound(path)
 
-                if input("If you like what you heard, press S to continue listening on Spotify. Push anything else to try a new sample ").upper() == "S":
-                    liked_show = show["external_urls"]["spotify"]
-                    break
-
                 # Delete audio
                 print("Deleting audio sample...")
                 os.remove(path)
 
-            if liked_show:
-                webbrowser.open(liked_show)
-                print("We're glad we could help you find a show you like!\n")
-                quit()
+                if input("If you like what you heard, press S to continue listening on Spotify. Push anything else to try a new sample ").upper() == "S":
+                    liked_show = show["external_urls"]["spotify"]
+                    break
+
+        if liked_show is not None:
+            webbrowser.open(liked_show)
+            print("We're glad we could help you find a show you like!\n")
+            quit()
 
 
 if __name__ == '__main__':
